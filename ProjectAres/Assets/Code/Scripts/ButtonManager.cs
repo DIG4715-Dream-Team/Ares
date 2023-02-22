@@ -1,4 +1,4 @@
-using UnityEditor;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +10,10 @@ public class ButtonManager : MonoBehaviour
 
     [SerializeField]
     private GameObject mainMenu;
-    private bool inMainMenu = true;
+    private bool inMainMenu;
     [SerializeField]
     private GameObject aboutMenu;
-    private bool inAboutMeny;
+    private bool inAboutMenu;
     [SerializeField]
     private GameObject controlMenu;
     private bool inControlMenu;
@@ -27,6 +27,14 @@ public class ButtonManager : MonoBehaviour
     {
         activeScene = SceneManager.GetActiveScene();
         currentScene = activeScene.name;
+        if (currentScene == "Testing Environment")
+        {
+            inMainMenu = true;
+        }
+        else if (currentScene != "Testing Environment")
+        {
+            inMainMenu = false;
+        }
     }
 
     void FixedUpdate()
@@ -62,7 +70,7 @@ public class ButtonManager : MonoBehaviour
     public void About()
     {
         aboutMenu.SetActive(true);
-        inAboutMeny = true;
+        inAboutMenu = true;
         pauseMenu.SetActive(false);
         if (inMainMenu == true)
         {
@@ -85,7 +93,7 @@ public class ButtonManager : MonoBehaviour
     public void Credit()
     {
         creditMenu.SetActive(true);
-        ChangeBools(inCreditMenu, true);
+        inCreditMenu = true;
         pauseMenu.SetActive(false);
         aboutMenu.SetActive(false);
         if (inMainMenu == true)
@@ -96,13 +104,49 @@ public class ButtonManager : MonoBehaviour
 
     public void Back()
     {
-        Debug.Log(inMainMenu);
-        Debug.Log(inCreditMenu);
         if (inMainMenu == true && inCreditMenu == true)
         {
             creditMenu.SetActive(false);
+            inCreditMenu = false;
             aboutMenu.SetActive(true);
-            Debug.Log("I should work");
+            return;
+        }
+        else if (inMainMenu == false && inCreditMenu == true)
+        {
+            creditMenu.SetActive(false);
+            inCreditMenu= false;
+            pauseMenu.SetActive(true);
+            return;
+        }
+
+        if (inMainMenu == true && inControlMenu == true)
+        {
+            controlMenu.SetActive(false);
+            inControlMenu = false;
+            aboutMenu.SetActive(true);
+            return;
+        }
+        else if (inMainMenu == false && inControlMenu == true)
+        {
+            controlMenu.SetActive(false);
+            inControlMenu= false;
+            pauseMenu.SetActive(true);
+            return;
+        }
+
+        if (inMainMenu == true && inAboutMenu == true)
+        {
+            aboutMenu.SetActive(false);
+            inAboutMenu= false;
+            mainMenu.SetActive(true);
+            return;
+        }
+        else if (inMainMenu == false && inAboutMenu == true)
+        {
+            aboutMenu.SetActive(false);
+            inAboutMenu= false;
+            pauseMenu.SetActive(true);
+            return;
         }
     }
 
@@ -120,10 +164,5 @@ public class ButtonManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-    }
-
-    public void ChangeBools(bool name, bool set)
-    {
-        name = set;
     }
 }
