@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -405,7 +405,6 @@ GameObject:
   - component: {fileID: 114711483}
   - component: {fileID: 114711482}
   - component: {fileID: 114711481}
-  - component: {fileID: 114711480}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -434,23 +433,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &114711480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114711478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &114711481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,9 +477,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114711480}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: Controls
+        m_MethodName: Credit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -557,7 +539,6 @@ GameObject:
   - component: {fileID: 261306336}
   - component: {fileID: 261306335}
   - component: {fileID: 261306334}
-  - component: {fileID: 261306333}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -586,23 +567,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &261306333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261306331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &261306334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,7 +611,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 261306333}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -709,7 +673,6 @@ GameObject:
   - component: {fileID: 351909789}
   - component: {fileID: 351909788}
   - component: {fileID: 351909787}
-  - component: {fileID: 351909786}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -738,23 +701,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &351909786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 351909784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &351909787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,7 +745,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 351909786}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -1266,7 +1212,6 @@ GameObject:
   - component: {fileID: 547637968}
   - component: {fileID: 547637967}
   - component: {fileID: 547637966}
-  - component: {fileID: 547637965}
   m_Layer: 5
   m_Name: About
   m_TagString: Untagged
@@ -1295,23 +1240,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &547637965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547637963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &547637966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,7 +1284,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 547637965}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: About
         m_Mode: 1
@@ -1503,6 +1431,7 @@ RectTransform:
   - {fileID: 1068387246}
   - {fileID: 1465356192}
   - {fileID: 1925645080}
+  - {fileID: 2075162844}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2210,7 +2139,6 @@ GameObject:
   - component: {fileID: 1389456706}
   - component: {fileID: 1389456705}
   - component: {fileID: 1389456704}
-  - component: {fileID: 1389456703}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -2239,23 +2167,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1389456703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389456701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &1389456704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2300,7 +2211,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1389456703}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -2399,7 +2310,6 @@ GameObject:
   - component: {fileID: 1555029544}
   - component: {fileID: 1555029543}
   - component: {fileID: 1555029542}
-  - component: {fileID: 1555029541}
   m_Layer: 5
   m_Name: Credit
   m_TagString: Untagged
@@ -2428,23 +2338,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1555029541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555029539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &1555029542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2489,7 +2382,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1555029541}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: Credit
         m_Mode: 1
@@ -2821,7 +2714,6 @@ GameObject:
   - component: {fileID: 1606365860}
   - component: {fileID: 1606365859}
   - component: {fileID: 1606365858}
-  - component: {fileID: 1606365857}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -2850,23 +2742,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1606365857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606365855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &1606365858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2911,7 +2786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1606365857}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: About
         m_Mode: 1
@@ -2973,7 +2848,6 @@ GameObject:
   - component: {fileID: 1682113211}
   - component: {fileID: 1682113210}
   - component: {fileID: 1682113209}
-  - component: {fileID: 1682113208}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -3002,23 +2876,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1682113208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682113206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &1682113209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3063,7 +2920,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1682113208}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -3260,7 +3117,6 @@ GameObject:
   - component: {fileID: 1742329255}
   - component: {fileID: 1742329254}
   - component: {fileID: 1742329253}
-  - component: {fileID: 1742329252}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3289,23 +3145,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1742329252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742329250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &1742329253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3350,7 +3189,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1742329252}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -3412,7 +3251,6 @@ GameObject:
   - component: {fileID: 1795312535}
   - component: {fileID: 1795312534}
   - component: {fileID: 1795312533}
-  - component: {fileID: 1795312532}
   m_Layer: 5
   m_Name: Start Game
   m_TagString: Untagged
@@ -3441,23 +3279,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1795312532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795312530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &1795312533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3502,7 +3323,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1795312532}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 5
@@ -3875,7 +3696,6 @@ GameObject:
   - component: {fileID: 2028021429}
   - component: {fileID: 2028021428}
   - component: {fileID: 2028021427}
-  - component: {fileID: 2028021426}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -3904,23 +3724,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2028021426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2028021424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 695056085}
-  aboutMenu: {fileID: 1888257404}
-  controlMenu: {fileID: 1068387245}
-  creditMenu: {fileID: 1465356191}
-  pauseMenu: {fileID: 1925645079}
 --- !u!114 &2028021427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3965,7 +3768,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2028021426}
+      - m_Target: {fileID: 2075162845}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: Back
         m_Mode: 1
@@ -4015,6 +3818,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028021424}
   m_CullTransparentMesh: 1
+--- !u!1 &2075162843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2075162844}
+  - component: {fileID: 2075162845}
+  m_Layer: 0
+  m_Name: ButtonManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2075162844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075162843}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -481, y: -259.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 598308635}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2075162845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075162843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cc8bf16c8373c47b12ae2afaa03262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenu: {fileID: 695056085}
+  aboutMenu: {fileID: 1888257404}
+  controlMenu: {fileID: 1068387245}
+  creditMenu: {fileID: 1465356191}
+  pauseMenu: {fileID: 1925645079}
 --- !u!1 &2124374915
 GameObject:
   m_ObjectHideFlags: 0
