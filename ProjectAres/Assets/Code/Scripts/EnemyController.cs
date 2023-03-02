@@ -40,4 +40,13 @@ public class EnemyController : MonoBehaviour
         result = Vector3.zero;
         return false;
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+        if (player != null)
+        {
+
+        }
+    }
 }
