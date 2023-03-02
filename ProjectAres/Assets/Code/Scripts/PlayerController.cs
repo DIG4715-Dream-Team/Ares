@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,15 +7,15 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float slidespeed;
     public float mouseSensitivity;
+    public Rigidbody rb;
 
-    private Rigidbody rb;
     void Start()
     {
         speed = 4;
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float hozMovement = Input.GetAxisRaw("Horizontal");
         float locomotion = Input.GetAxisRaw("Vertical");
