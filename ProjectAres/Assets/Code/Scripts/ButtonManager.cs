@@ -23,15 +23,34 @@ public class ButtonManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
 
+    void Start()
+    {
+        if (currentScene == "Tiny_Shell_MainMenu")
+        {
+            HUDPreset1();
+            Debug.Log("1");
+        }
+        else if (currentScene == "Tiny_Shell")
+        {
+            HUDPreset2();
+            Debug.Log("2");
+        }
+        else
+        {
+            HUDPreset1();
+            Debug.Log("3");
+        }
+    }
+
     void Update()
     {
         activeScene = SceneManager.GetActiveScene();
         currentScene = activeScene.name;
-        if (currentScene == "Testing Environment")
+        if (currentScene == "Tiny_Shell_MainMenu")
         {
             inMainMenu = true;
         }
-        else if (currentScene != "Testing Environment")
+        else if (currentScene != "Tiny_Shell_MainMenu")
         {
             inMainMenu = false;
         }
@@ -161,8 +180,32 @@ public class ButtonManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void QuitToMain(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        inMainMenu = false;
+    }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+
+    private void HUDPreset1()
+    {
+        mainMenu.SetActive(true);
+        aboutMenu.SetActive(false);
+        controlMenu.SetActive(false);
+        creditMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+    }
+
+    private void HUDPreset2()
+    {
+            mainMenu.SetActive(false);
+            aboutMenu.SetActive(false);
+            controlMenu.SetActive(false);
+            creditMenu.SetActive(false);
+            pauseMenu.SetActive(false);
+    }    
 }

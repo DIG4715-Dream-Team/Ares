@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity;
     public Rigidbody rb;
 
+    public float Health;
+    public float Score;
     void Start()
     {
         speed = 4;
@@ -17,9 +19,21 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float hozMovement = Input.GetAxisRaw("Horizontal");
-        float locomotion = Input.GetAxisRaw("Vertical");
-
-        rb.velocity = new Vector3(hozMovement * speed, rb.velocity.y, locomotion * speed);
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += transform.forward * Time.deltaTime * speed;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            rb.position -= transform.forward * Time.deltaTime * speed;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            rb.position -= transform.right * Time.deltaTime * speed;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rb.position += transform.right * Time.deltaTime * speed;
+        }
     }
 }
