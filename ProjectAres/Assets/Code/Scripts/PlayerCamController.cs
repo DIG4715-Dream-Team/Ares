@@ -12,24 +12,12 @@ public class PlayerCamController : MonoBehaviour
     public float maximumY;
     float rotationY;
     float rotationX;
-    [SerializeField]
-    private GameObject player;
-
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
         MouseLook();
     }
 
-    void FixedUpdate()
-    {
-        //player.GetComponent<PlayerController>().rb.rotation = Quaternion.Euler(Rigidbody.rotation.eulerAngles + )
-
-    }
     private void MouseLook()
     {
         if (axes == RotationAxes.MouseXAndY)
@@ -40,10 +28,7 @@ public class PlayerCamController : MonoBehaviour
             rotationX += Input.GetAxis("Mouse X") * sensitivityX;
             rotationX = Mathf.Clamp(rotationX, minimumX, maximumX);
 
-
             transform.eulerAngles = new Vector3(-rotationY, rotationX, 0);
-            player.GetComponent<PlayerController>().rb.transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
-
         }
     }
 }
