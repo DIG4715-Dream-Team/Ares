@@ -41,12 +41,12 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collision other)
     {
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
-        if (player != null)
+        if (other != null && other.gameObject.CompareTag("Player"))
         {
-
+            agent.SetDestination(player.transform.position);
         }
     }
 }

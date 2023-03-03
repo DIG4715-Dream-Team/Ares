@@ -1,5 +1,3 @@
-using System;
-using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,12 +7,14 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity;
     public Rigidbody rb;
 
-    public float Health;
-    public float Score;
+    public float health;
+    public float timeLeft;
     void Start()
     {
         speed = 4;
         rb = GetComponent<Rigidbody>();
+        health = 20;
+        timeLeft = 90;
     }
 
     void Update()
@@ -23,6 +23,22 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate()
+    {
+        PMovement();
+        CountDownTimer();
+    }
+
+    private void PlayerHealthManager()
+    {
+
+    }    
+
+    private void CountDownTimer()
+    {
+        timeLeft = timeLeft - Time.deltaTime;
+    }
+
+    private void PMovement()
     {
         if (Input.GetKey(KeyCode.W))
         {
