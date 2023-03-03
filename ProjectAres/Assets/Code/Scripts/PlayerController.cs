@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,8 +7,10 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float slidespeed;
     public float mouseSensitivity;
+    public Rigidbody rb;
 
-    private Rigidbody rb;
+    public float Health;
+    public float Score;
     void Start()
     {
         speed = 4;
@@ -17,9 +19,34 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float hozMovement = Input.GetAxisRaw("Horizontal");
-        float locomotion = Input.GetAxisRaw("Vertical");
+        PauseControl();
+    }
 
-        rb.velocity = new Vector3(hozMovement * speed, rb.velocity.y, locomotion * speed);
+    void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += speed * Time.deltaTime * transform.forward;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.position -= speed * Time.deltaTime * transform.forward;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.position -= speed * Time.deltaTime * transform.right;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.position += speed * Time.deltaTime * transform.right;
+        }
+    }
+
+    private void PauseControl()
+    {
+        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+        }
     }
 }
