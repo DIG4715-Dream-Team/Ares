@@ -17,23 +17,36 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        PauseControl();
+    }
+
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            transform.position += speed * Time.deltaTime * transform.forward;
         }
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            rb.position -= transform.forward * Time.deltaTime * speed;
+            rb.position -= speed * Time.deltaTime * transform.forward;
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            rb.position -= transform.right * Time.deltaTime * speed;
+            rb.position -= speed * Time.deltaTime * transform.right;
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            rb.position += transform.right * Time.deltaTime * speed;
+            rb.position += speed * Time.deltaTime * transform.right;
+        }
+    }
+
+    private void PauseControl()
+    {
+        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
         }
     }
 }
