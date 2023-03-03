@@ -25,13 +25,13 @@ public class GameManager : MonoBehaviour
     {
         activeScene = SceneManager.GetActiveScene();
         currentScene = activeScene.name;
-        //updateText();
+        updateText();
     }
 
     private void updateText()
     {
-        //health.text = $"Current Health:{player.GetComponent<PlayerController>().Health}";
-        //score.text = $"Score: {player.GetComponent<PlayerController>().Score}";
+        health.text = $"Current Health:{player.GetComponent<PlayerController>().health}";
+        score.text = $"Time Left: {player.GetComponent<PlayerController>().timeLeft}";
     }
 
     private void SceneMananger()
