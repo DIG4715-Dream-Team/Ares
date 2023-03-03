@@ -13,7 +13,7 @@ public class PlayerCamController : MonoBehaviour
     float rotationY;
     float rotationX;
 
-    void Update()
+    void FixedUpdate()
     {
         MouseLook();
     }
