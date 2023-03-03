@@ -1,5 +1,3 @@
-using System;
-using System.Threading;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,31 +7,62 @@ public class PlayerController : MonoBehaviour
     public float mouseSensitivity;
     public Rigidbody rb;
 
-    public float Health;
-    public float Score;
+    public float health;
+    public float timeLeft;
     void Start()
     {
         speed = 4;
         rb = GetComponent<Rigidbody>();
+        health = 20;
+        timeLeft = 90;
+    }
+
+    void Update()
+    {
+        PauseControl();
     }
 
     void FixedUpdate()
     {
+        PMovement();
+        CountDownTimer();
+    }
+
+    private void PlayerHealthManager()
+    {
+
+    }    
+
+    private void CountDownTimer()
+    {
+        timeLeft = timeLeft - Time.deltaTime;
+    }
+
+    private void PMovement()
+    {
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.forward * Time.deltaTime * speed;
+            transform.position += speed * Time.deltaTime * transform.forward;
         }
-        else if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
-            rb.position -= transform.forward * Time.deltaTime * speed;
+            rb.position -= speed * Time.deltaTime * transform.forward;
         }
-        else if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
-            rb.position -= transform.right * Time.deltaTime * speed;
+            rb.position -= speed * Time.deltaTime * transform.right;
         }
-        else if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
-            rb.position += transform.right * Time.deltaTime * speed;
+            rb.position += speed * Time.deltaTime * transform.right;
+        }
+    }
+
+    private void PauseControl()
+    {
+        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
         }
     }
 }
