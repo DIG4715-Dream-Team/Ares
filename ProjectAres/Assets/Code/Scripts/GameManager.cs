@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         activeScene = SceneManager.GetActiveScene();
         currentScene = activeScene.name;
-        updateText();
+        //updateText();
     }
 
     private void updateText()

@@ -1,5 +1,6 @@
 using UnityEngine.AI;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,13 +10,22 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private bool trackingPlayer;
+    private GameObject player;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-    void Update()
+    void FixedUpdate()
     {
-        if(agent.remainingDistance <= agent.stoppingDistance)
+        Patrolling();
+    }
+
+    private void Patrolling()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance && trackingPlayer == false)
         {
             Vector3 point;
             if (RandomPoint(centrePoint.position, range, out point))
@@ -41,12 +51,33 @@ public class EnemyController : MonoBehaviour
         return false;
     }
 
-    private void OnTriggerEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if (other != null && other.gameObject.CompareTag("Player"))
         {
-            agent.SetDestination(player.transform.position);
+            //agent.SetDestination(player.transform.position);
+            Debug.DrawLine(transform.position, player.transform.position, Color.magenta, 5.0f);
+            Debug.DrawRay(player.transform.position, Vector3.up, Color.magenta, 5.0f);
+            trackingPlayer = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+        if (other != null && other.gameObject.CompareTag("Player"))
+        {
+            trackingPlayer = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        PlayerController player = other.gameObject.GetComponent<PlayerController>();
+        if (other != null && other.gameObject.CompareTag("Player"))
+        {
+            player.PlayerHit();
         }
     }
 }

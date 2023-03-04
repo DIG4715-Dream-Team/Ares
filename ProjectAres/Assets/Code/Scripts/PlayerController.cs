@@ -9,12 +9,21 @@ public class PlayerController : MonoBehaviour
 
     public float health;
     public float timeLeft;
+
+    public bool detectable;
+
+    public GameObject bManager;
+
+    public bool died { get; private set; }
+    public bool reachedWater { get; private set; }
     void Start()
     {
+        bManager = GameObject.FindGameObjectWithTag("bManager");
         speed = 4;
         rb = GetComponent<Rigidbody>();
         health = 20;
         timeLeft = 90;
+        detectable = true;
     }
 
     void Update()
@@ -28,9 +37,9 @@ public class PlayerController : MonoBehaviour
         CountDownTimer();
     }
 
-    private void PlayerHealthManager()
+    public void PlayerHit()
     {
-
+        //bManager.GetComponent<ButtonManager>()
     }    
 
     private void CountDownTimer()
