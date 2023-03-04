@@ -1,26 +1,35 @@
 using UnityEngine.AI;
 using UnityEngine;
-using Unity.VisualScripting;
 
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
     public float range;
-    public Transform centrePoint;
+    public Transform centerPoint;
 
     private Rigidbody rb;
 
     private bool trackingPlayer;
     private GameObject player;
+    private PlayerController Player;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
+        Player = player.GetComponent<PlayerController>();
     }
+
     void FixedUpdate()
     {
-        Patrolling();
+        if (trackingPlayer == true)
+        {
+            agent.SetDestination(player.transform.position);
+        }
+        else if (trackingPlayer == false)
+        {
+            Patrolling();
+        }
     }
 
     private void Patrolling()
@@ -28,7 +37,7 @@ public class EnemyController : MonoBehaviour
         if (agent.remainingDistance <= agent.stoppingDistance && trackingPlayer == false)
         {
             Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point))
+            if (RandomPoint(centerPoint.position, range, out point))
             {
                 Debug.DrawLine(transform.position, point, Color.red, 5.0f);
                 Debug.DrawRay(point, Vector3.up, Color.red, 5.0f);
@@ -46,26 +55,22 @@ public class EnemyController : MonoBehaviour
             result = hit.position;
             return true;
         }
-
         result = Vector3.zero;
         return false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if (other != null && other.gameObject.CompareTag("Player"))
         {
-            //agent.SetDestination(player.transform.position);
-            Debug.DrawLine(transform.position, player.transform.position, Color.magenta, 5.0f);
-            Debug.DrawRay(player.transform.position, Vector3.up, Color.magenta, 5.0f);
+            Debug.DrawLine(transform.position, Player.transform.position, Color.magenta, 5.0f);
+            Debug.DrawRay(Player.transform.position, Vector3.up, Color.magenta, 5.0f);
             trackingPlayer = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
         if (other != null && other.gameObject.CompareTag("Player"))
         {
             trackingPlayer = false;
@@ -74,10 +79,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
-        if (other != null && other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.PlayerHit();
+            Player.HealthManagement(-5);
+            trackingPlayer = false;
+            agent.SetDestination(centerPoint.transform.position);
         }
     }
 }

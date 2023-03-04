@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,10 +15,9 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI MiddleText;
     [SerializeField]
     private TextMeshProUGUI BuffTimer;
-    private float buffLeft;
 
-    [SerializeField]
-    private GameObject Player;
+    private GameObject player;
+    private PlayerController Player;
     [SerializeField]
     public string currentScene { get; private set; }
     [SerializeField]
@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timeLeft = 90;
-        Player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
+        Player = player.GetComponent<PlayerController>();
         HUDPreset();
     }
 
@@ -54,6 +55,8 @@ public class GameManager : MonoBehaviour
         activeScene = SceneManager.GetActiveScene();
         currentScene = activeScene.name;
         PauseLogic();
+        GameFinishedLogic();
+        UpdateHUDElements();
     }
 
     private void FixedUpdate()
@@ -64,9 +67,9 @@ public class GameManager : MonoBehaviour
 
     private void UpdateHUDElements()
     {
-        //Health.text = $"Current Health:{Player.GetComponent<PlayerController>().Health}";
-        Timer.text = $"Time Left:{timeLeft}";
-        //BuffTimer.text = $"Player.GetComponent<PlayerController>().ActiveBuff}:Time Left: buffLeft}";
+        Health.text = $"Current Health:{Player.Health}";
+        Timer.text = $"Time Left:{timeLeft.ToString("F1")}";
+        //BuffTimer.text = $"{Player.GetComponent<PlayerController>().ActiveBuff}:Time Left: {buffLeft}";
     }
 
     private void HUDPreset()
@@ -94,22 +97,47 @@ public class GameManager : MonoBehaviour
 
     private void PauseLogic()
     {
-        if (currentScene != "Tiny_Beach_MainMenu" && Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        if (Player.gameOver == false)
+        {
+            if (currentScene != "Tiny_Beach_MainMenu" && Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            {
+                Time.timeScale = 0;
+                isPaused = true;
+            }
+
+            if (isPaused == true & inPauseMenu == false)
+            {
+                pauseMenu.SetActive(true);
+                inPauseMenu = true;
+            }
+
+            if (Time.timeScale == 1)
+            {
+                pauseMenu.SetActive(false);
+                inPauseMenu = false;
+            }
+        }
+    }
+
+    public void GameFinishedLogic()
+    {
+        if (Player.died == true)
         {
             Time.timeScale = 0;
-            isPaused = true;
+            endMenu.SetActive(true);
+            MiddleText.text = "You have died!";
         }
-
-        if (isPaused == true)
+        else if (Player.reachedWater == true)
         {
-            pauseMenu.SetActive(true);
-            inPauseMenu = true;
+            Time.timeScale = 0;
+            endMenu.SetActive(true);
+            MiddleText.text = "You reached the water!";
         }
-
-        if (Time.timeScale == 1)
+        else if (timeLeft == 0)
         {
-            pauseMenu.SetActive(false);
-            inPauseMenu = false;
+            Time.timeScale = 0;
+            endMenu.SetActive(true);
+            MiddleText.text = "You failed to reach the water in time!";
         }
     }
 
@@ -122,34 +150,6 @@ public class GameManager : MonoBehaviour
         else if (inPauseMenu == true)
         {
             pauseMenu.SetActive(false);
-        }
-    }
-
-    private void checkActiveMenu()
-    {
-        if (mainMenu.activeInHierarchy == true)
-        {
-            inMainMenu = true;
-        }
-
-        if (pauseMenu.activeInHierarchy == true)
-        {
-            inPauseMenu = true;
-        }
-
-        if (aboutMenu.activeInHierarchy == true)
-        {
-            inAboutMenu = true;
-        }
-
-        if (controlMenu.activeInHierarchy == true)
-        {
-            inControlMenu = true;
-        }
-
-        if (creditMenu.activeInHierarchy == true)
-        {
-            inCreditMenu = true;
         }
     }
 
@@ -171,7 +171,8 @@ public class GameManager : MonoBehaviour
         CheckActivity();
         aboutMenu.SetActive(true);
         inAboutMenu = true;
-        MiddleText.text = "Change me in GameManager About";
+        MiddleText.text = "Options";
+
     }
 
     public void Controls()
@@ -181,7 +182,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         aboutMenu.SetActive(false);
         CheckActivity();
-        MiddleText.text = "Change me in GameManager Controls";
+        MiddleText.text = "Controls";
     }
 
     public void Credit()
@@ -191,7 +192,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
         aboutMenu.SetActive(false);
         CheckActivity();
-        MiddleText.text = "Change me in GameManager Credit";
+        MiddleText.text = "Credit";
     }
 
     public void Back()
@@ -201,7 +202,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inMainMenu == false && inCreditMenu == true)
@@ -209,7 +210,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -218,7 +219,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inMainMenu == false && inControlMenu == true)
@@ -226,7 +227,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -243,7 +244,7 @@ public class GameManager : MonoBehaviour
             aboutMenu.SetActive(false);
             inAboutMenu = false;
             pauseMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Game Paused";
             return;
         }
 
@@ -252,7 +253,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inMainMenu == false && inCreditMenu == true)
@@ -260,7 +261,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -269,7 +270,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inMainMenu == false && inControlMenu == true)
@@ -277,7 +278,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -288,7 +289,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inPauseMenu == false && inCreditMenu == true)
@@ -296,7 +297,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -305,7 +306,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inPauseMenu == false && inControlMenu == true)
@@ -313,7 +314,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -330,7 +331,7 @@ public class GameManager : MonoBehaviour
             aboutMenu.SetActive(false);
             inAboutMenu = false;
             pauseMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Game Paused";
             return;
         }
 
@@ -339,7 +340,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inPauseMenu == false && inCreditMenu == true)
@@ -347,7 +348,7 @@ public class GameManager : MonoBehaviour
             creditMenu.SetActive(false);
             inCreditMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
 
@@ -356,7 +357,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
         else if (inPauseMenu == false && inControlMenu == true)
@@ -364,7 +365,7 @@ public class GameManager : MonoBehaviour
             controlMenu.SetActive(false);
             inControlMenu = false;
             aboutMenu.SetActive(true);
-            MiddleText.text = "";
+            MiddleText.text = "Options";
             return;
         }
     }
