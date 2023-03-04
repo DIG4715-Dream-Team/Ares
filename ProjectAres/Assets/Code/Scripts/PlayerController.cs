@@ -1,53 +1,66 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
-    public float slidespeed;
-    public float mouseSensitivity;
+    private float slideForce;
+    private float mouseSensitivity { get; }
     public Rigidbody rb;
 
-    public float health;
-    public float timeLeft;
-
-    public bool detectable;
-
-    public GameObject bManager;
+    public int Health { get; private set; }
 
     public bool died { get; private set; }
     public bool reachedWater { get; private set; }
+    public bool gameOver { get; private set; }
     void Start()
     {
-        bManager = GameObject.FindGameObjectWithTag("bManager");
+        slideForce = 10;
         speed = 4;
         rb = GetComponent<Rigidbody>();
-        health = 20;
-        timeLeft = 90;
-        detectable = true;
+        Health = 20;
     }
 
     void Update()
     {
         PauseControl();
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            PushBuff();
+        }
     }
 
     void FixedUpdate()
     {
-        PMovement();
-        CountDownTimer();
+        PlayerMovement();
+        //TestingFunction();
     }
 
-    public void PlayerHit()
+    public void TestingFunction()
     {
-        //bManager.GetComponent<ButtonManager>()
-    }    
-
-    private void CountDownTimer()
-    {
-        timeLeft = timeLeft - Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            reachedWater = true;
+            gameOver = true;
+        }
     }
 
-    private void PMovement()
+    public void HealthManagement(int amount)
+    {
+        Health = Health + amount;
+
+        if (Health <= 0)
+        {
+            died = true;
+        }
+    }
+
+    public void PushBuff()
+    {
+        rb.AddRelativeForce(Vector3.forward * slideForce, ForceMode.Impulse);
+    }
+
+    private void PlayerMovement()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -55,15 +68,15 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
-            rb.position -= speed * Time.deltaTime * transform.forward;
+            transform.position -= speed * Time.deltaTime * transform.forward;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            rb.position -= speed * Time.deltaTime * transform.right;
+            transform.position -= speed * Time.deltaTime * transform.right;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            rb.position += speed * Time.deltaTime * transform.right;
+            transform.position += speed * Time.deltaTime * transform.right;
         }
     }
 

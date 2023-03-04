@@ -20,7 +20,7 @@
 [Aa]ssets/Plugins/Editor/JetBrains*
 
 # User settings directory
-"/[Uu]serSettings/Layouts/
+"/[Uu]serSettings/[Ll]ayouts*
 
 # Visual Studio cache directory
 .vs/
