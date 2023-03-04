@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,8 @@ public class ButtonManager : MonoBehaviour
     private string currentScene;
     private Scene activeScene;
     private bool isPaused;
+    public bool wonGame;
+    private GameObject player;
 
     [SerializeField]
     private GameObject mainMenu;
@@ -22,9 +25,15 @@ public class ButtonManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenu;
     private bool inPauseMenu;
+    [SerializeField]
+    private GameObject endMenu;
+
+    [SerializeField]
+    private TextMeshProUGUI endText;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         activeScene = SceneManager.GetActiveScene();
         currentScene = activeScene.name;
         if (currentScene == "Tiny_Shell_MainMenu")
@@ -41,6 +50,7 @@ public class ButtonManager : MonoBehaviour
     void Update()
     {
         PauseLogic();
+        EndGameLogic();
     }
 
     void FixedUpdate()
@@ -162,6 +172,7 @@ public class ButtonManager : MonoBehaviour
         controlMenu.SetActive(false);
         creditMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        endMenu.SetActive(false);
     }
 
     private void HUDPreset2()
@@ -171,6 +182,7 @@ public class ButtonManager : MonoBehaviour
         controlMenu.SetActive(false);
         creditMenu.SetActive(false);
         pauseMenu.SetActive(false);
+        endMenu.SetActive(false);
     }    
 
     private void PauseLogic()
@@ -189,6 +201,20 @@ public class ButtonManager : MonoBehaviour
             isPaused = false;
         }
     }    
+
+    private void EndGameLogic()
+    {
+        if (Time.timeScale == 0 && player.GetComponent<PlayerController>().reachedWater == true)
+        {
+            endMenu.SetActive(true);
+            endText.text = "You've Won!";
+        }
+        else if (Time.timeScale == 0 && player.GetComponent<PlayerController>().died == true)
+        {
+            endMenu.SetActive(true);
+            endText.text = "You Lost!";
+        }
+    }
 
     private void CheckActivity()
     {
