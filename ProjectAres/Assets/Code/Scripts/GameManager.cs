@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI MiddleText;
     [SerializeField]
-    private TextMeshProUGUI BuffTimer;
+    private TextMeshProUGUI BuffInfo;
+    private float buffLeft;
 
     private GameObject player;
     private PlayerController Player;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         timeLeft = 90;
+        buffLeft = 5;
         player = GameObject.FindGameObjectWithTag("Player");
         Player = player.GetComponent<PlayerController>();
         HUDPreset();
@@ -57,19 +59,59 @@ public class GameManager : MonoBehaviour
         PauseLogic();
         GameFinishedLogic();
         UpdateHUDElements();
+        UpdateBuffHUDElement();
     }
 
     private void FixedUpdate()
     {
+        Timers();
+    }
+
+    private void Timers()
+    {
         timeLeft = timeLeft -= Time.deltaTime;
-        //buffLeft = Player.GetComponent<PlayerController>().BuffTimer -= Time.deltaTime;
+
+        if (Player.UsingAbility == true)
+        {
+            buffLeft = buffLeft -= Time.deltaTime;
+            if (buffLeft <= 0)
+            {
+                Player.UsingAbility = false;
+                buffLeft = 5;
+                Player.ResetBuffs();
+            }
+        }
     }
 
     private void UpdateHUDElements()
     {
         Health.text = $"Current Health:{Player.Health}";
         Timer.text = $"Time Left:{timeLeft.ToString("F1")}";
-        //BuffTimer.text = $"{Player.GetComponent<PlayerController>().ActiveBuff}:Time Left: {buffLeft}";
+    }
+
+    private void UpdateBuffHUDElement()
+    {
+        if (Player.UsingAbility == true)
+        {
+            BuffInfo.text = $"Ability:{Player.ActiveBuff} \nTime Left:{buffLeft.ToString("F1")}";
+        }
+        else if (Player.AbilityReady != null && Player.UsingAbility == false)
+        {
+            BuffInfo.text = $"No active buff.\n{Player.AbilityReady} Ability is ready!";
+        }
+        else if (Player.AbilityReady == null)
+        {
+            BuffInfo.text = "No active buff.";
+        }
+
+        if (Player.InBush == true)
+        {
+            BuffInfo.text = "Hiding in bush.";
+        }
+        else
+        {
+            BuffInfo.text = "No active buff.";
+        }
     }
 
     private void HUDPreset()
@@ -97,7 +139,7 @@ public class GameManager : MonoBehaviour
 
     private void PauseLogic()
     {
-        if (Player.gameOver == false)
+        if (Player.GameOver == false)
         {
             if (currentScene != "Tiny_Beach_MainMenu" && Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             {
@@ -121,19 +163,19 @@ public class GameManager : MonoBehaviour
 
     public void GameFinishedLogic()
     {
-        if (Player.died == true)
+        if (Player.Died == true)
         {
             Time.timeScale = 0;
             endMenu.SetActive(true);
             MiddleText.text = "You have died!";
         }
-        else if (Player.reachedWater == true)
+        else if (Player.ReachedWater == true)
         {
             Time.timeScale = 0;
             endMenu.SetActive(true);
             MiddleText.text = "You reached the water!";
         }
-        else if (timeLeft == 0)
+        else if (timeLeft <= 0)
         {
             Time.timeScale = 0;
             endMenu.SetActive(true);
