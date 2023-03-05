@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Player.AbilityReady != null && Player.UsingAbility == false)
         {
-            BuffInfo.text = $"No active buff\n{Player.AbilityReady} Ability is ready!";
+            BuffInfo.text = $"No active buff\n{Player.AbilityReady} Ability is ready! Press F to activate";
         }
         else if (Player.AbilityReady == null)
         {

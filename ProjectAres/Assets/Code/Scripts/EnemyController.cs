@@ -17,11 +17,15 @@ public class EnemyController : MonoBehaviour
         Player = player.GetComponent<PlayerController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (trackingPlayer == true)
         {
             agent.SetDestination(player.transform.position);
+            if (Player.CompareTag("HiddenPlayer"))
+            {
+                trackingPlayer = false;
+            }
         }
         else if (trackingPlayer == false)
         {
