@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -2788553166812254108
     second: Turtle_recover
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material #10
+    second: {fileID: 2100000, guid: 904af2dd442f02244b5ca20df57092c5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

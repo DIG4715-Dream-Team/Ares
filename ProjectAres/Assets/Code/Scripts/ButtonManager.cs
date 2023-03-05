@@ -57,7 +57,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (currentScene == "Tiny_Shell_MainMenu")
         {
-            MiddleText.text = "Tiny Shell";
+            MiddleText.text = "Tiny Shell\nGet to the shore as fast as possible";
             mainMenu.SetActive(true);
             aboutMenu.SetActive(false);
             controlMenu.SetActive(false);
@@ -154,7 +154,7 @@ public class ButtonManager : MonoBehaviour
         pauseMenu.SetActive(false);
         aboutMenu.SetActive(false);
         CheckActivity();
-        MiddleText.text = "Controls";
+        MiddleText.text = "Controls\nW,A,S, and D to move\nF to activate ability";
     }
 
     public void Credit()
@@ -164,7 +164,7 @@ public class ButtonManager : MonoBehaviour
         pauseMenu.SetActive(false);
         aboutMenu.SetActive(false);
         CheckActivity();
-        MiddleText.text = "Credit";
+        MiddleText.text = "Credit\nCameron Welsh - Art\nPablo Sarria - Tech\nJunior Rojas - Code";
     }
 
     public void Back()

@@ -88,9 +88,9 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateBuff()
     {
-        if (Time.timeScale == 1 && AbilityReady != null)
+        if (Time.timeScale == 1 && AbilityReady != null && UsingAbility != true)
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 BuffManagement(AbilityReady);
             }
