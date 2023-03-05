@@ -1,7 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BushController : MonoBehaviour
+public class ShorelineManager : MonoBehaviour
 {
     private GameObject player;
     private PlayerController Player;
@@ -15,17 +14,7 @@ public class BushController : MonoBehaviour
     {
         if (other != null && other.gameObject.CompareTag("Player"))
         {
-            Player.Hidding(true);
-            Player.InBush = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other != null && other.gameObject.CompareTag("HiddenPlayer"))
-        {
-            Player.Hidding(false);
-            Player.InBush = false;
+            Player.ReachedWater = true;
         }
     }
 }

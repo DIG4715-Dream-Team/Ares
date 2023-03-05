@@ -7,15 +7,12 @@ public class EnemyController : MonoBehaviour
     public float range;
     public Transform centerPoint;
 
-    private Rigidbody rb;
-
-    private bool trackingPlayer;
+    public bool trackingPlayer;
     private GameObject player;
     private PlayerController Player;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         player = GameObject.FindGameObjectWithTag("Player");
         Player = player.GetComponent<PlayerController>();
     }

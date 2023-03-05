@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - bManager
+  - HiddenPlayer
+  - Enemy
+  - Speed
+  - Sneak
+  - ButtonManager
   layers:
   - Default
   - TransparentFX
