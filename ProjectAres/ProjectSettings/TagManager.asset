@@ -6,6 +6,9 @@ TagManager:
   tags:
   - HiddenPlayer
   - Enemy
+  - Speed
+  - Sneak
+  - ButtonManager
   layers:
   - Default
   - TransparentFX

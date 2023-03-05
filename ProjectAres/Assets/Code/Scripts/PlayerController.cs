@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public int Health { get; private set; }
     public bool Died { get; private set; }
-    public bool ReachedWater { get; private set; }
+    public bool ReachedWater;
     public bool GameOver { get; private set; }
 
     public string ActiveBuff { get; private set; }
@@ -34,14 +34,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PauseControl();
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            AbilityReady = "Sneak";
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            AbilityReady = "Speed";
-        }
         ActivateBuff();
     }
 
@@ -68,12 +60,14 @@ public class PlayerController : MonoBehaviour
             ActiveBuff = "Sneak";
             transform.gameObject.tag = "HiddenPlayer";
             Enemy.trackingPlayer = false;
+            AbilityReady = null;
         }
         if (name == "Speed")
         {
             UsingAbility = true;
             ActiveBuff = "Speed Boost";
             speed = 6;
+            AbilityReady = null;
         }
     }
 
@@ -94,9 +88,12 @@ public class PlayerController : MonoBehaviour
 
     public void ActivateBuff()
     {
-        if (Time.timeScale == 1 && AbilityReady != null && Input.GetKeyDown(KeyCode.J))
+        if (Time.timeScale == 1 && AbilityReady != null)
         {
-            BuffManagement(AbilityReady);
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                BuffManagement(AbilityReady);
+            }
         }
     }
 
@@ -111,9 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             transform.gameObject.tag = "Player";
         }
-
     }
-
 
     private void PlayerMovement()
     {
