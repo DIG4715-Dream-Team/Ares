@@ -1,18 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class buffController : MonoBehaviour
+public class BuffController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject player;
+    private PlayerController Player;
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        Player = player.GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (other != null && other.gameObject.CompareTag("Player"))
+        {
+            if (this.gameObject.CompareTag("Speed"))
+            {
+                Player.BuffControl("Speed");
+                Destroy(this.gameObject);
+            }
+            else if (this.gameObject.CompareTag("Sneak"))
+            {
+                Player.BuffControl("Sneak");
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
