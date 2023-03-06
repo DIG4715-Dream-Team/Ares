@@ -164,7 +164,7 @@ public class ButtonManager : MonoBehaviour
         pauseMenu.SetActive(false);
         aboutMenu.SetActive(false);
         CheckActivity();
-        MiddleText.text = "Credit\nCameron Welsh - Art\nPablo Sarria - Tech\nJunior Rojas - Code";
+        MiddleText.text = "Credit\nCameron Welsh - Art | Pablo Sarria - Tech | Junior Rojas - Code";
     }
 
     public void Back()
