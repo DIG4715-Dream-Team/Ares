@@ -12,7 +12,7 @@ public class buffController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other != null && other.gameObject.CompareTag("Player"))
+        if (other != null && other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("HiddenPlayer"))
         {
             if (this.gameObject.CompareTag("Speed"))
             {
