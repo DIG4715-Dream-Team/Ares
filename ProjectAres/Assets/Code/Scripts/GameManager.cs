@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
             Player = player.GetComponent<PlayerController>();
         }
+        Time.timeScale = 1;
     }
 
     private void Update()
