@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 93
+  controlID: 50
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 651
     height: 1347
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -96,8 +96,8 @@ MonoBehaviour:
     y: 0
     width: 295
     height: 798
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 94
+  controlID: 51
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 95
+  controlID: 52
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1245,36 +1245,36 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Art/Audio/Bird
+    - Assets/Art/Audio
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Art/Audio/Bird
+  - Assets/Art/Audio
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\pablo\Documents\School\Spring 2023\Game Production\Ares\ProjectAres
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 16}
-    m_SelectedIDs: c8160200
-    m_LastClickedID: 136904
-    m_ExpandedIDs: 000000003e7d0000407d0000427d0000447d0000467d0000487d00004a7d00004c7d0000547d0000cc16020000ca9a3b
+    m_SelectedIDs: 4a7f0000
+    m_LastClickedID: 32586
+    m_ExpandedIDs: 000000003a7f00003c7f00003e7f0000407f0000427f0000447f0000467f0000487f00004a7f00004c7f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: TechGuides
-      m_OriginalName: TechGuides
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 32120
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -1288,7 +1288,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003e7d0000407d0000427d0000447d0000467d0000487d00004a7d00004c7d00004e7d0000
+    m_ExpandedIDs: 000000003a7f00003c7f00003e7f0000407f0000427f0000447f0000467f0000487f00004a7f00004c7f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1379,7 +1379,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 309
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -1416,9 +1416,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 32c10600
-      m_LastClickedID: 0
-      m_ExpandedIDs: aa30feff6031feff8669feff1c6bfeff60cbffff9accffff0cfbffff086c0000a66d00007e6e00001a7300001c77000060ab060056b70600c6be0600
+      m_SelectedIDs: be6d0000
+      m_LastClickedID: 28094
+      m_ExpandedIDs: e4faffffee6c000036700000d4740000d6780000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1667,9 +1667,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.750207, y: 33.11, z: -22.999073}
+    m_Target: {x: -5.8395686, y: 33.551083, z: -21.505812}
     speed: 2
-    m_Value: {x: 5.750207, y: 33.11, z: -22.999073}
+    m_Value: {x: -5.8395686, y: 33.551083, z: -21.505812}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1718,11 +1718,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.05430383, y: 0.6261693, z: -0.045419775, w: -0.77701813}
     speed: 2
-    m_Value: {x: -0.05421241, y: 0.62706554, z: -0.045481693, w: -0.77574563}
+    m_Value: {x: -0.05428057, y: 0.62590116, z: -0.045400325, w: -0.77668536}
   m_Size:
-    m_Target: 2.448796
+    m_Target: 22.22397
     speed: 2
-    m_Value: 2.448796
+    m_Value: 22.22397
   m_Ortho:
     m_Target: 0
     speed: 2
