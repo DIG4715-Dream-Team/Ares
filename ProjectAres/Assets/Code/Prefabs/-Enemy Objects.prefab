@@ -201,6 +201,19 @@ CapsuleCollider:
   m_Height: 0.18
   m_Direction: 1
   m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!65 &8504335147755820517
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8707902353892954685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.43, y: 0.12, z: 0.6}
+  m_Center: {x: 0, y: 0.08, z: 0.34}
 --- !u!195 &259509234929626654
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -239,16 +252,23 @@ MonoBehaviour:
   range: 20
   centerPoint: {fileID: 2180681996976433111}
   trackingPlayer: 0
---- !u!65 &8504335147755820517
-BoxCollider:
+--- !u!95 &4491453373055660255
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8707902353892954685}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.43, y: 0.12, z: 0.6}
-  m_Center: {x: 0, y: 0.08, z: 0.34}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3bbaab4d03983864b9b88a73bcd9f96a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
