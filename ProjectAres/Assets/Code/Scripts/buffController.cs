@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BuffController : MonoBehaviour
+public class buffController : MonoBehaviour
 {
     private GameObject player;
     private PlayerController Player;
